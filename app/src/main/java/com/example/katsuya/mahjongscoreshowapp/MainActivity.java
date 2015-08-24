@@ -12,13 +12,32 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //値たち
     private int gameRound = 0;
     private int windNum = 0;
+    private TextView gameText;
+    private TextView wind1, wind2, wind3, wind4;
+    private TextView score1, score2, score3, score4;
+    private TextView score;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //値をonCreate時に初期化
+        gameText = (TextView) findViewById(R.id.gameText);
+
+        wind1 = (TextView) findViewById(R.id.wind1);
+        wind2 = (TextView) findViewById(R.id.wind2);
+        wind3 = (TextView) findViewById(R.id.wind3);
+        wind4 = (TextView) findViewById(R.id.wind4);
+
+        score1 = (TextView) findViewById(R.id.score1);
+        score2 = (TextView) findViewById(R.id.score2);
+        score3 = (TextView) findViewById(R.id.score3);
+        score4 = (TextView) findViewById(R.id.score4);
     }
 
 
@@ -27,17 +46,10 @@ public class MainActivity extends AppCompatActivity {
         String[] wind = {"東", "北", "西", "南"};
 
         //局変更
-        TextView tv = (TextView) findViewById(R.id.gameText);
-
         gameRound = (gameRound + 1) % 8;
-        tv.setText(games[gameRound]);
+        gameText.setText(games[gameRound]);
 
         //それぞれの風(東南西北)変更
-        TextView wind1 = (TextView) findViewById(R.id.wind1);
-        TextView wind2 = (TextView) findViewById(R.id.wind2);
-        TextView wind3 = (TextView) findViewById(R.id.wind3);
-        TextView wind4 = (TextView) findViewById(R.id.wind4);
-
         windNum++;
         wind1.setText(wind[(windNum + 4) % 4]);
         wind2.setText(wind[(windNum + 3) % 4]);
@@ -47,34 +59,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void changeScore(View view) {
-        final TextView score1 = (TextView) findViewById(R.id.score1);
 
+        //どのスコアがクリックされたか
+        switch (view.getId()){
+            case R.id.score1:
+                score = score1;
+                break;
+            case R.id.score2:
+                score = score2;
+                break;
+            case R.id.score3:
+                score = score3;
+                break;
+            case R.id.score4:
+                score = score4;
+                break;
+            default:
+        }
+
+        //EditTextとAlertDialog作製
         final EditText editView = new EditText(MainActivity.this);
-
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
+        //ダイアログの実装
         alertDialogBuilder
-                .setTitle("点数入力");
-
-        alertDialogBuilder.setView(editView);
+                .setTitle("点数入力")
+                .setMessage("点数を入力してください。")
+                .setView(editView);
 
         alertDialogBuilder.setPositiveButton("＋",
                 new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        int score = Integer.parseInt(editView.getText().toString());
-                        int sum = Integer.parseInt(score1.getText().toString()) + score;
-                        score1.setText(String.valueOf(sum));
+                    public void onClick( DialogInterface dialog, int which ) {
+                        int changeScore = Integer.parseInt( editView.getText().toString() );
+                        int sum = Integer.parseInt( score.getText().toString() ) + changeScore;
+                        score.setText( String.valueOf(sum) );
                     }
                 });
 
         alertDialogBuilder.setNegativeButton("ー",
                 new DialogInterface.OnClickListener() {
                     @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        int score = Integer.parseInt(editView.getText().toString());
-                        int sum = Integer.parseInt(score1.getText().toString()) - score;
-                        score1.setText(String.valueOf(sum));
+                    public void onClick( DialogInterface dialog, int which ) {
+                        int changeScore = Integer.parseInt (editView.getText().toString() );
+                        int sum = Integer.parseInt( score.getText().toString() ) - changeScore;
+                        score.setText( String.valueOf(sum) );
                     }
                 });
 
@@ -87,6 +116,10 @@ public class MainActivity extends AppCompatActivity {
 
         alertDialogBuilder.show();
     }
+
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,4 +142,5 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 }

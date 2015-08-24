@@ -99,8 +99,11 @@
                 android:text="南"
                 android:textSize="30dp"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/score2"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:onClick="changeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -140,8 +143,11 @@
                 android:text="西"
                 android:textSize="30dp"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/score3"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:onClick="changeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
@@ -181,8 +187,11 @@
                 android:text="北"
                 android:textSize="30dp"/>
 
-            <EditText
+            <TextView
                 android:id="@+id/score4"
+                android:textColor="#000000"
+                android:clickable="true"
+                android:onClick="changeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
