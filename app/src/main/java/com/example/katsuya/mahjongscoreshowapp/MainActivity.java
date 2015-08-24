@@ -1,5 +1,7 @@
 package com.example.katsuya.mahjongscoreshowapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,15 +11,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    int gameRound = 0;
-    int windNum = 0;
+    private int gameRound = 0;
+    private int windNum = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
+
 
     public void nextGame(View view) {
         String[] games = {"東1", "東2", "東3", "東4", "南1", "南2", "南3", "南4"};
@@ -36,11 +38,31 @@ public class MainActivity extends AppCompatActivity {
         TextView wind4 = (TextView) findViewById(R.id.wind4);
 
         windNum++;
-        wind1.setText(wind[ (windNum + 4) % 4 ]);
-        wind2.setText(wind[ (windNum + 3) % 4 ]);
-        wind3.setText(wind[ (windNum + 2) % 4 ]);
-        wind4.setText(wind[ (windNum + 1) % 4 ]);
+        wind1.setText(wind[(windNum + 4) % 4]);
+        wind2.setText(wind[(windNum + 3) % 4]);
+        wind3.setText(wind[(windNum + 2) % 4]);
+        wind4.setText(wind[(windNum + 1) % 4]);
 
+    }
+
+    public void changeScore(View view) {
+        final TextView score1 = (TextView) findViewById(R.id.score1);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        alertDialogBuilder
+                .setTitle("点数入力")
+                .setMessage("点数を入力");
+
+        alertDialogBuilder.setPositiveButton(
+                "OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        score1.setText("1000");
+                    }
+                });
+
+        alertDialogBuilder.show();
     }
 
     @Override
