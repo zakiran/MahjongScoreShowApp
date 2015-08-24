@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -48,17 +49,39 @@ public class MainActivity extends AppCompatActivity {
     public void changeScore(View view) {
         final TextView score1 = (TextView) findViewById(R.id.score1);
 
+        final EditText editView = new EditText(MainActivity.this);
+
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         alertDialogBuilder
-                .setTitle("点数入力")
-                .setMessage("点数を入力");
+                .setTitle("点数入力");
 
-        alertDialogBuilder.setPositiveButton(
-                "OK", new DialogInterface.OnClickListener() {
+        alertDialogBuilder.setView(editView);
+
+        alertDialogBuilder.setPositiveButton("＋",
+                new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        score1.setText("1000");
+                        int score = Integer.parseInt(editView.getText().toString());
+                        int sum = Integer.parseInt(score1.getText().toString()) + score;
+                        score1.setText(String.valueOf(sum));
+                    }
+                });
+
+        alertDialogBuilder.setNegativeButton("ー",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        int score = Integer.parseInt(editView.getText().toString());
+                        int sum = Integer.parseInt(score1.getText().toString()) - score;
+                        score1.setText(String.valueOf(sum));
+                    }
+                });
+
+        alertDialogBuilder.setNeutralButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
                     }
                 });
 
