@@ -7,7 +7,12 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
 import android.widget.EditText;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //値をonCreate時に初期化
-        gameText = (TextView) findViewById(R.id.gameText);
+        gameText = (TextView) findViewById(R.id.roundText);
 
         wind1 = (TextView) findViewById(R.id.wind1);
         wind2 = (TextView) findViewById(R.id.wind2);
@@ -38,6 +43,14 @@ public class MainActivity extends AppCompatActivity {
         score2 = (TextView) findViewById(R.id.score2);
         score3 = (TextView) findViewById(R.id.score3);
         score4 = (TextView) findViewById(R.id.score4);
+
+        //南西北側のレイアウト回転
+        LinearLayout linearLayout2 = (LinearLayout) findViewById(R.id.linearLayout2);
+        linearLayout2.setRotation(270.0f);
+        LinearLayout linearLayout3 = (LinearLayout) findViewById(R.id.linearLayout3);
+        linearLayout3.setRotation(180.0f);
+        LinearLayout linearLayout4 = (LinearLayout) findViewById(R.id.linearLayout4);
+        linearLayout4.setRotation(90.0f);
     }
 
 

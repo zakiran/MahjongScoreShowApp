@@ -16,7 +16,7 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/gameText"
+            android:id="@+id/roundText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -29,7 +29,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout"
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/centerLayout"
@@ -57,14 +57,14 @@
 
             <TextView
                 android:id="@+id/score1"
-                android:textColor="#000000"
-                android:clickable="true"
-                android:onClick="changeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:onClick="changeScore"
                 android:text="25000"
+                android:textColor="#000000"
                 android:textSize="30dp"/>
 
         </LinearLayout>
@@ -101,14 +101,14 @@
 
             <TextView
                 android:id="@+id/score2"
-                android:textColor="#000000"
-                android:clickable="true"
-                android:onClick="changeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:onClick="changeScore"
                 android:text="25000"
+                android:textColor="#000000"
                 android:textSize="30dp"/>
 
         </LinearLayout>
@@ -145,14 +145,14 @@
 
             <TextView
                 android:id="@+id/score3"
-                android:textColor="#000000"
-                android:clickable="true"
-                android:onClick="changeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:onClick="changeScore"
                 android:text="25000"
+                android:textColor="#000000"
                 android:textSize="30dp"/>
 
         </LinearLayout>
@@ -189,14 +189,14 @@
 
             <TextView
                 android:id="@+id/score4"
-                android:textColor="#000000"
-                android:clickable="true"
-                android:onClick="changeScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"
+                android:clickable="true"
+                android:onClick="changeScore"
                 android:text="25000"
+                android:textColor="#000000"
                 android:textSize="30dp"/>
 
         </LinearLayout>
